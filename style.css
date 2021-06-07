@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #0e0d0dbe
+}
+
+.start-form__form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  padding: 2% 3%;
+}
+
+.start-form__heading {
+  margin-bottom: 3%;
+  font-size: 32px;
+}
+
+.start-form__text {
+  margin-bottom: 3%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.start-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-form__input {
+  margin-bottom: 3%;
+  padding: 1%;
+  width: 50%;
+  height: 50px;
+  border-radius: 20px;
+  box-shadow: none;
+  outline: none;
+  font-size: 24px;
+  transition: box-shadow .3s ease-in-out;
+}
+
+.start-form__input:focus {
+  box-shadow: 2px 2px 20px #fff;
+}
+
+.start-form__input::placeholder {
+  font-size: 20px;
+}
+
+.start-form__button {
+  padding: 2% 5%;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  box-shadow: 2px 2px 7px #0e0d0de3;
+  outline: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 2px 2px 7px #0e0d0de3;
+  background-color: #d62c2c;
+  cursor: pointer;
+  transition: border-color .3s ease-in-out,
+              box-shadow .3s ease-in-out,
+              text-shadow .3s ease-in-out,
+              transform .3s ease-in-out;
+}
+
+.start-form__button:disabled {
+  color: rgba(255, 255, 255, 0.363);
+  background-color: #d62c2c3d;
+}
+
+.start-form__button:focus {
+  border-color: #dd2323;
+  box-shadow: 3px 3px 20px #fff;
+}
+
+.start-form__button:hover {
+  text-shadow: 5px 5px 7px #000;
+}
+
+.start-form__button:active {
+  transform: scale(1.1);
+}
+
+.heading {
+  justify-self: center;
+  align-self: center;
+  line-height: 1.5;
+  color: #d62c2c;
+  text-shadow: 1px 1px 7px #fff;
+}
+
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  width: 100vw;
+  height: 100vh;
+  padding: 1% 1%;
+  list-style: none;
+  background-color: #0e0d0de3;
+}
+
+.timer {
+  position: absolute;
+  top: 8px;
+  left: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  background-color: #e7f341e3;
+}
+
+.card {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 1px 1px 7px #838282e3;
+  transition: transform .2s ease-in-out, filter .2s ease-in-out;
+}
+
+.two-in-row:not(:nth-child(2n)) {
+  margin-right: 1vw;
+}
+
+.two-in-row {
+  flex: 0 0 40%;
+  height: 39%;
+}
+
+.two-in-row>.card-content {
+  font-size: 15em;
+}
+
+.four-in-row:not(:nth-child(4n)) {
+  margin-right: 1vw;
+}
+
+.four-in-row {
+  flex: 0 0 20%;
+  height: 19%;
+}
+
+.six-in-row {
+  flex: 0 0 15%;
+  height: 11%;
+}
+
+.six-in-row:not(:nth-child(6n)) {
+  margin-right: 1vw;
+}
+
+.six-in-row>.card-content {
+  font-size: 5em;
+}
+
+.eight-in-row:not(:nth-child(8n)) {
+  margin-right: 1vw;
+}
+
+.eight-in-row {
+  flex: 0 1 11%;
+  height: 8%;
+}
+
+.eight-in-row>.card-content {
+  font-size: 4em;
+}
+
+.ten-in-row:not(:nth-child(10n)) {
+  margin-right: .5vw;
+}
+
+.ten-in-row {
+  flex: 0 0 9%;
+  height: 7%;
+}
+
+.ten-in-row>.card-content {
+  font-size: 2em;
+}
+
+.card:active {
+  transform: scale(.9);
+}
+
+.card-content {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 8em;
+  color: #c91717d7;
+  opacity: 0;
+}
+
+.face-up {
+  opacity: 1;
+}
+
+.face-down {
+  background: linear-gradient(45deg, #d62c2c 35%, #a2a939 48%);
+}
+
+.matched-cards {
+  filter: opacity(25%);
+  cursor: no-drop;
+}
+
+.matched-cards:active {
+  transform: none;
+}
+
+.flip {
+  animation: flip .1s;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(-180deg);
+  }
+  50% {
+    transform: rotateY(-90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
